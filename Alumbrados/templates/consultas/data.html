@@ -1,0 +1,131 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+  <html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css ">
+  </head>
+<body>
+
+
+
+<div id="page">
+        <div id="header">
+          <h1>INVERSIÓN ALUMBRADO AÑO 2014</h1>
+          <center><h2>Ciencia, Tecnología e Innovación</h2></center>
+        </div>
+</div>
+<br>
+<br>
+<!--PRIMERA CONSULTA
+
+<h1 align="center" style="color: #C0C0C0"> &nbsp; &nbsp; &nbsp; COMUNAS </h1>
+<br>-->
+
+ <form name="consulta1" method="POST" action= "{% url 'result_data' %}">
+  {% csrf_token %}
+  <h1 style="color: #000000"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Numero de Comuna:
+     <select name="codigo">
+       <!--<option value="2014"> 2014</option>-->
+       <option value="1"> 1</option>
+       <option value="2"> 2</option>
+       <option value="3"> 3</option>
+       <option value="4"> 4</option>
+       <option value="5"> 5</option>
+       <option value="6"> 6</option>
+       <option value="7"> 7</option>
+       <option value="8"> 8</option>
+       <option value="9"> 9</option>
+       <option value="10"> 10</option>
+       <option value="11"> 11</option>
+       <option value="12"> 12</option>
+       <option value="13"> 13</option>
+       <option value="14"> 14</option>
+
+    </select>
+  <input type="submit" name="Aceptar" value="Aceptar" onsubmit="this.reset()">
+</h1>
+ </form>
+
+
+
+<!-- SEGUNDA CONSULTA
+
+<h1 style="color: #C0C0C0"> &nbsp; &nbsp; &nbsp; INVERSION </h1>
+<br>-->
+
+ <form name="consulta2" method="POST" action= "{% url 'result_data' %}">
+  {% csrf_token %}
+  <h1 style="color: #000000"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Inversion:
+     <select name="codigo2">
+     <option value="9.267.784.oo"> 9.267.784</option>
+     <option value="523.587.245.oo">523.587.245</option>
+     <option value="68.472.331.oo"> 68.472.331</option>
+     <option value="416.908.812.oo"> 416.908.812</option>
+     <option value="582.326.898.oo"> 582.326.898</option>
+     <option value="576.590.810.oo"> 576.590.810</option>
+     <option value="134.081.022.oo"> 134.081.022</option>
+     <option value="249.556.845.oo"> 249.556.845</option>
+     <option value="115.606.981.oo"> 115.606.981</option>
+     <option value="373.600.307.oo"> 373.600.307</option>
+     <option value="507.435.899.oo"> 507.435.899</option>
+     <option value="261.986.237.oo"> 261.986.237</option>
+     <option value="330.279.061.oo"> 330.279.061</option>
+     <option value="357.500.338.oo"> 357.500.338</option>
+    <!--<select name="codigo2">
+     <option value="1"> 1</option>
+     <option value="2"> 2</option>
+     <option value="3"> 3</option>
+     <option value="4"> 4</option>
+     <option value="5"> 5</option>
+     <option value="6"> 6</option>
+     <option value="7"> 7</option>
+     <option value="8"> 8</option>
+     <option value="9"> 9</option>
+     <option value="10"> 10</option>
+     <option value="11"> 11</option>
+     <option value="12"> 12</option>
+     <option value="13"> 13</option>
+     <option value="14"> 14</option>-->
+
+    </select>
+  <input type="submit" name="Aceptar" value="Aceptar" onsubmit="this.reset()">
+  </h1>
+  </form>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> AÑO</th>
+            <th>COMUNA</th>
+            <th>PUNTOS LUMINOSOS</th>
+            <th>INVERSION</th>
+          </tr>
+        </thead>
+         <!-- CONTENIDO DE LOS DATOS  -->
+        {% for key in results_df %}
+        <tbody>
+          <tr>
+            <div class="row">
+              <td>{{key.a_o}}</td>
+              <td>{{key.comuna}}</td>
+              <td>{{key.puntos_luminosos}}</td>
+              <td>{{key.inversion}}</td>
+            </div>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</body>
+</html>

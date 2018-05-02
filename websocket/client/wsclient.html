@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+  <head>
+    <title>Chat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="chat.js"></script>
+  </head>
+  <body>
+    <div id="login">
+      <label>Nombre: </label> <input autocomplete="off" type="text" id="username" value="Usuario" />
+      <button onclick="loadChat();">Ingresar</button>
+    </div>
+    <div id="chat" hidden>
+      <div id="messages" style="width: 600px; height: 300px; overflow-y: scroll; background-color: #D4FCFF; border: 1px solid #CACACA; padding: 10px;">
+        Aún no te has conectado al chat.
+      </div>
+      <input type="text" style="width: 530px; height: 30px; padding-left: 5px; margin: 0px;" id="message"
+             onkeyup="onKeyUp(event);" />
+      <button style="width:81px; height: 36px; padding: 0px; margin: 0px;" onclick="sendMessage();">Enviar</button>
+      <br /><br />
+      <button onclick="closeChat();">Salir</button>
+    </div>
+    <script>checkSupport();</script>
+  </body>
+</html>
