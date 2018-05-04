@@ -12,7 +12,11 @@ function sendMessage()
     message = document.getElementById("message");
     if (message.value)
     {
-        ws.send("<strong>" + username + "</strong>: " + message.value);
+        var f=new Date();
+        cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+        window.status =cad;
+        setTimeout("mostrarhora()",1000);
+        ws.send("<strong>" + username + "</strong>: " + message.value+cad);
         message.value = "";
     }
     message.focus();
@@ -42,7 +46,11 @@ function loadChat()
 
     ws.onopen = function()
     {
-        ws.send(username + " ha ingresado al chat.");
+      var f=new Date();
+      cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+      window.status =cad;
+      setTimeout("mostrarhora()",1000);
+        ws.send(username + " ha ingresado al chat.   "+"       "+cad   );
     };
 
     ws.onclose = function()
